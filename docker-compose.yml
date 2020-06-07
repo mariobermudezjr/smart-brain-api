@@ -8,14 +8,17 @@ services:
     command: npm start
     working_dir: /usr/src/smart-brain-api
     environment:
-      POSTGRES_USER: brain
-      POSTGRES_PASSWORD: brain
-      POSTGRES_DB: smart-brain-docker
-      POSTGRES_HOST: postgres
+      POSTGRES_URI: postgress://brain:brain@postgres:5432/smart-brain-docker
+      # POSTGRES_USER: sally
+      # POSTGRES_PASSWORD: secret
+      # POSTGRES_DB: smart-brain-docker
+      # POSTGRES_HOST: postgres
     links:
       - postgres
+    # Map docker image port 3000 to our host machine port 3000
     ports:
       - '3000:3000'
+    # Allows us to link docker image nodemon backend code changes to our host computer and reload comandline output
     volumes:
       - ./:/usr/src/smart-brain-api
   # Postgres
@@ -26,6 +29,6 @@ services:
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
     container_name: postgres
-    image: postgres
+    build: ./postgres
     ports:
       - '5432:5432'
