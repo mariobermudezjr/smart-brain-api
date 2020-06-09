@@ -13,8 +13,6 @@ services:
       # POSTGRES_PASSWORD: secret
       # POSTGRES_DB: smart-brain-docker
       # POSTGRES_HOST: postgres
-    links:
-      - postgres
     # Map docker image port 3000 to our host machine port 3000
     ports:
       - '3000:3000'
