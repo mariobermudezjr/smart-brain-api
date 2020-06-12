@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const redis = require('redis')
 
 // Setup Redis
-console.log('Redis URI: ', process.env.REDIS_URI)
 const redisClient = redis.createClient(process.env.REDIS_URI)
 
 redisClient.on('error', function (error) {
